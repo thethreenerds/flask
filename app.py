@@ -76,9 +76,9 @@ def delete():
     
     id = request.form['id']
     cur = mysql.cursor() #create a connection to the SQL instance
-    s='''DELETE FROM students WHERE id = '%s'; ''' 
+    s='''DELETE FROM students WHERE studentID = '%s'; ''' 
     app.logger.info(s)
-    cur.execute(s,id)
+    cur.execute(s,[id])
     mysql.commit()
   else:
     return render_template('delete.html')
